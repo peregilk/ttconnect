@@ -1,5 +1,5 @@
 # ttconnect
-A script for combining the power of tmux with the TPU-v4 VMs. 
+A script for combining the power of (tmux)[https://github.com/tmux/tmux/wiki] with the TPU-v4 VMs. 
 
 
 ## Installation
@@ -32,5 +32,6 @@ The default setting is syncronized panes. Whatever you type in any pane, will ha
 C-b: setw synchronize-panes off
 ```
 
-
+## Feedback
+This is the first version of this script. There are a lot of possible features that might be added here. For instance more info about the pod  in the Window title bar, nicer colors, shortcuts etc. Feel free to modify the script, and to add suggestions. I will be glad to add them into the script. Please send any comments to (per@capia.no)[mailto:per@capia.no].
 

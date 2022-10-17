@@ -1,15 +1,8 @@
 #!/bin/bash
 zone="us-central2-b"
+name=$1
 
-# Parse the command line
-while getopts u:a:f:n: flag
-do
-    case "${flag}" in
-        n) name=${OPTARG};;
-    esac
-done
-echo "Name: $name";
-
+echo "Connection to: $name";
 
 ## Some basic checks if the input it valid
 output=$(gcloud compute tpus describe $name --zone $zone 2>/dev/null)
@@ -33,13 +26,15 @@ fi
 
 tmux has-session -t $name 2>/dev/null
 
+
 if [ $? != 0 ]; then
 	tmux new-session -d -s $name
-	#tmux split-window -h -t $name
-	
+	tmux select-layout main-vertical
+
 	for i in $(seq $(($size-1))); do
 		tmux split-window -v -d -t $name
-		tmux select-layout tiled
+		# Making sure there is space to split
+		tmux select-layout main-horizontal
 	done
 
 	for i in $(seq $(($size))); do
@@ -50,8 +45,24 @@ if [ $? != 0 ]; then
 
         done
 	
+	# Select the final layout
+	if ((size >= 16));then
+		tmux select-layout tiled
+	else	
+		tmux select-layout tiled
+		tmux select-layout main-vertical
+	fi
+	
+	# Enable mouse control - for changing pane size
+	tmux set-mouse on
+
 	# Move cursor to worker 0
 	tmux select-pane -t $name:0.0
+	
+	# Resize the left window
+        tmux resize-pane -L 50
+
+
 
 	# Set pane synchronization
 	tmux set-window-option -t $name:0 synchronize-panes on

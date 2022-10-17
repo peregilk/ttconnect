@@ -17,7 +17,7 @@ chmod a+x ttconnect
 While the script also works on a single TPU slice, its main purpose is when working with the pods. It will automatically open a tmux window with a tile for each of the TPU slices, allowing them to be controlled both in parallel and individually.
 
 ```bash
-# Open a connection to a already existing TPU VM or TPU-pod VM. 
+# Open a connection to an already existing TPU VM or TPU-pod VM. 
 ./ttconnect [TPU name]
 
 ````
@@ -26,7 +26,7 @@ This command will open connections to all the workers in a tmux with split panes
 
 ![ttconnect screenshot](./screenshot.png)
 
-The default setting is syncronized panes. Whatever you type in one pane, will happen in all the panes. However, if you like to make a change only to one of the TPUs, you can turn off this behaviour by setting:
+The default setting is syncronized panes. Whatever you type in one pane, will then happen in all the panes. However, if you like to make a change only to one of the TPUs, you can turn off this behaviour by setting:
 
 ```bash
 C-b: setw synchronize-panes off

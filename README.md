@@ -26,14 +26,14 @@ This command will open connections to all the workers in a tmux with split panes
 
 ![ttconnect screenshot](./screenshot.png)
 
-The default setting is syncronized panes. Whatever you type in any pane, will happen in all the panes. However, if you like, this can be turned off by setting:
+The default setting is syncronized panes. Whatever you type in one pane, will happen in all the panes. However, if you like to make a change only to one of the TPUs, you can turn off this behaviour by setting:
 
 ```bash
 C-b: setw synchronize-panes off
 ```
 
 ## Known issues
-Please set the zone in the beginning of the script. In the future it will use the default zone.
+* Please set the zone in the beginning of the script. In the future it will use the default zone.
 
 ## Feedback
 This is the first version of this script. There are a lot of possible features that might be added here. For instance more info about the pod  in the Window title bar, nicer colors, shortcuts etc. Feel free to modify the script, and to add suggestions. I will be glad to add them into the script. Please send any comments to [per@capia.no](mailto:per@capia.no).

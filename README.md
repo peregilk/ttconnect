@@ -4,12 +4,13 @@ Currently just a draft file of a convenience script for connecting to TPU-v4 VMs
 
 ## Installation
 ```bash
-# You might have to put "sudo" in front
-# Download ttconnect to any directory in your path where you have write access (like /usr/local/bin)
-wget 
+# Download ttconnect
+wget https://raw.githubusercontent.com/peregilk/ttconnect/main/ttconnect
 
 # Make the program executable
-chmod a+x /usr/local/bin/ttconnect
+chmod a+x ttconnect
+
+# Optionally copy it to a place in your path (like /usr/local/bin/)
 ```
 
 ## Use
@@ -17,7 +18,7 @@ While the script also works on a single TPU slice, its main purpose is when work
 
 ```bash
 # Open a connection to a already existing TPU VM or TPU-pod VM
-ttconnect MyTPU
+./ttconnect MyTPU
 
 ````
 

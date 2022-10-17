@@ -9,7 +9,7 @@ Currently just a draft file of a convenience script for connecting to TPU-v4 VMs
 wget 
 
 # Make the program executable
-chmod +x /usr/local/bin/ttconnect
+chmod a+x /usr/local/bin/ttconnect
 ```
 
 ## Use

@@ -2,7 +2,7 @@
 zone="us-central2-b"
 name=$1
 
-echo "Connection to: $name";
+echo "Connecting to $name";
 
 ## Some basic checks if the input it valid
 output=$(gcloud compute tpus describe $name --zone $zone 2>/dev/null)

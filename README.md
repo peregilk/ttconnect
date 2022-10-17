@@ -1,5 +1,5 @@
 # ttconnect
-Currently just a draft file of a convenience script for connecting to TPU-v4 VMs using tmux. 
+A script for combining the power of tmux with the TPU-v4 VMs. 
 
 
 ## Installation

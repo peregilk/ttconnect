@@ -24,7 +24,7 @@ While the script also works on a single TPU slice, its main purpose is when work
 
 This command will open connections to all the workers in a tmux with split panes. A typical workspace for a v4-32 looks like this:
 
-
+<img src="screenshot.png" />
 
 The default setting is syncronized panes. Whatever you type in any pane, will happen in all the panes. However, if you like, this can be turned off by setting:
 

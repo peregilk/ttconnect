@@ -1,0 +1,68 @@
+#!/bin/bash
+zone="us-central2-b"
+
+# Parse the command line
+while getopts u:a:f:n: flag
+do
+    case "${flag}" in
+        n) name=${OPTARG};;
+    esac
+done
+echo "Name: $name";
+
+
+## Some basic checks if the input it valid
+output=$(gcloud compute tpus describe $name --zone $zone 2>/dev/null)
+if [ $? != 0 ]; then
+	echo "Could not find a tpu-v4 with this name in the zone $zone. Exiting."
+	exit 1
+fi
+
+tputype=$(echo $output | awk '{print $2}')
+tpusize=$(echo $tputype| cut -c4-)
+size="$(($tpusize / 8))"
+
+if (( $size < 1 )); then
+	echo "This is reported as a $tputype with $size tpu(s). This is not a valid tpu-v4 resource. Exiting."
+	exit 1
+fi
+
+
+# Check if the session exists, if not create it
+# If there already is a session with this name, it will just attach
+
+tmux has-session -t $name 2>/dev/null
+
+if [ $? != 0 ]; then
+	tmux new-session -d -s $name
+	#tmux split-window -h -t $name
+	
+	for i in $(seq $(($size-1))); do
+		tmux split-window -v -d -t $name
+		tmux select-layout tiled
+	done
+
+	for i in $(seq $(($size))); do
+		worker=$(($i -1))
+                command="gcloud alpha compute tpus tpu-vm ssh $name --zone $zone --worker $worker"
+		tmux select-pane -t $name:0.$worker
+		tmux send-keys -t $name "$command" Enter
+
+        done
+	
+	# Move cursor to worker 0
+	tmux select-pane -t $name:0.0
+
+	# Set pane synchronization
+	tmux set-window-option -t $name:0 synchronize-panes on
+	
+	# Set pane border format
+	tmux set-option -t $name pane-border-status top	
+	tmux set-option -t $name pane-border-format "worker #{pane_index} "
+
+
+fi
+
+# Attach to the session
+tmux attach -t $name
+

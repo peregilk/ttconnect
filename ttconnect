@@ -54,7 +54,8 @@ if [ $? != 0 ]; then
 	fi
 	
 	# Enable mouse control - for changing pane size
-	tmux set-mouse on
+	# Disabled for now since it makes copying more difficult
+	# tmux set-mouse on
 
 	# Move cursor to worker 0
 	tmux select-pane -t $name:0.0

@@ -19,13 +19,22 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Extracting TPU type and size without quotes
-tputype=$(echo $output | awk '{print $2}')
-tpusize=$(echo $tputype | cut -c4-)
-size=$(($tpusize / 8))
+# Extract the accelerator type and numeric size
+tputype=$(echo "$output" | grep 'acceleratorType' | awk '{print $2}' | tr -d '"' | tr -d '\r' | tr -d '\n')
+tpusize=$(echo "$tputype" | grep -o '[0-9]\+$')
+
+# Initialize divisor based on TPU type
+if [[ "$tputype" == *"v5litepod"* ]]; then
+    divisor=4
+else
+    divisor=8
+fi
+
+# Calculate the size with integer arithmetic
+let size=tpusize/divisor
 
 if (( size < 1 )); then
-    echo "This is reported as a $tputype with $size tpu(s). This is not a valid tpu-v4 resource. Exiting."
+    echo "This is reported as a $tputype with $size tpu(s). This is not a valid tpu resource. Exiting."
     exit 1
 fi
 

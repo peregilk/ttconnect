@@ -32,6 +32,13 @@ The default setting is syncronized panes. Whatever you type in one pane, will th
 ```bash
 C-b: setw synchronize-panes off
 ```
+Depending upon how many windows that are open, it might be beneficial to change the layout mode. You can cycle through the five different layout modes with this command:
+
+```bash
+C-b <space>
+```
+
+For more advanced use, please refer to the [tmux documentation](https://man.openbsd.org/OpenBSD-current/man1/tmux.1).
 
 ## Feedback
 Feel free to modify the script, and to add features. If you come up with improvements, I will be glad to add them into the script. Please send any comments to [per@capia.no](mailto:per@capia.no).

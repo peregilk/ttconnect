@@ -1,5 +1,5 @@
 # ttconnect
-A script for combining the power of [tmux](https://github.com/tmux/tmux/wiki) with the TPU VMs. The script currently handles both TPU-v3, TPU-v4 and TPU-v5. 
+A script for combining the power of [tmux](https://github.com/tmux/tmux/wiki) with the TPU VMs. The script currently handles both TPU-v3, TPU-v4 and TPU-v5. The main idea is to use tmux for executing identical commands on multiple VMs.
 
 
 ## Installation

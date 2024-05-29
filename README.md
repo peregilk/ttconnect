@@ -14,7 +14,7 @@ chmod a+x ttconnect
 ```
 
 ## Use and Tips
-While the script also works on a single TPU slice, its main purpose is when working with the pods. It will automatically open a tmux window with a tile for each of the TPU slices, allowing them to be controlled both in parallel and individually.
+The script is made for handling TPU pods. It will automatically open a tmux window with a tile for each of the TPU VMs, allowing them to be controlled both in parallel and individually.
 
 ```bash
 # Open a connection to an already existing TPU VM or TPU-VMs.

@@ -64,7 +64,7 @@ However, if you really want to zap the entire window, you will have to do:
 ```bash
 C-b: kill-window
 ```
-If you have used venv's when setting up the tpus, restarting the entire session, is not really a big deal.
+You can then use `ttconnect`to connect to the same pod again with a fresh login. 
 
 ### Killing Stuck Scripts
 In rare cases, some scripts crashes. If you dont want to recreate the TPUs/VMs, this is really useful commands.

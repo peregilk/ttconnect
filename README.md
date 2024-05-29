@@ -81,6 +81,13 @@ gcloud alpha compute tpus tpu-vm ssh MyName --project=MyProject-11111 --zone=MyZ
 
 For more advanced use, please refer to the [tmux documentation](https://man.openbsd.org/OpenBSD-current/man1/tmux.1).
 
+### Switch Sessions
+This is really just an tmux tips but it seems like a lot of tmux users simply is not aware of its most useful feature. List all sessions:
+
+```bash
+C-b s
+```
+
 ## Feedback
 Feel free to modify the script, and to add features. If you come up with improvements, I will be glad to add them into the script. Please send any comments to [per@capia.no](mailto:per@capia.no).
 

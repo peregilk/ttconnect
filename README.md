@@ -44,7 +44,7 @@ C-b: setw synchronize-panes off
 
 
 ### Target Specific Panes
-It might happen that one of the tpus dies for some reason, and it might not be the one that is in focus. To target specific panes there are a few tricks that I like to use. Firstly you can always go to another pane using `ctrl-b arrow`. However, in many cases this pane is too small to do real work. Then you can cycle so that the layout model is `main-horisontal`(see above). Then use this command to see the id of each of the panes:
+It might happen that one of the tpus dies for some reason, and it might not be the one that is in focus. To target specific panes there are a few tricks that I like to use. Firstly you can always go to another pane using `ctrl-b <arrow>`. However, in many cases this pane is too small for working. If you have multiple VMs running, the first thing would then be to switch to the layout `main-horisontal`(see above). After you have done this, use the following command to see the id of each of the panes:
 ```bash
 C-b q
 ```
